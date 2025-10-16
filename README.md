@@ -1,12 +1,13 @@
 # Overview
-This web application converts Markdown text input into HTML. It uses the `marked` library to parse Markdown and `highlight.js` to syntax-highlight code blocks.
+This web application displays a list of products along with their total sales. It dynamically calculates and updates the total sales amount based on the individual product sales.
 
 # Setup
-Simply open the `index.html` file in your web browser. There are no external dependencies or complex setup processes.
+Simply open the `index.html` file in your web browser. The application requires no external dependencies or complex setup processes.
 
 # Usage
-1. Paste your Markdown text into the textarea provided.
-2. Click the "Convert" button to see the rendered HTML output below the input area.
-3. Code blocks within the Markdown will be highlighted appropriately.
+1. Open the application in your browser.
+2. The table displays products with their corresponding total sales.
+3. The total sales amount is updated automatically based on the individual product sales.
 
-Enjoy converting your Markdown content easily!
+# Improvements Made
+In this version, a Bootstrap table has been added to list each product with its total sales. The application now accurately calculates and displays the overall total sales amount after rendering the products. This enhances the user experience by providing a clear view of sales data.
