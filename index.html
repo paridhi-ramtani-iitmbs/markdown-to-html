@@ -3,41 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Converter</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <title>Product Sales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        #markdown-output {
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Product Sales</h1>
+        <table id="product-sales" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Total Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Product rows will be injected here -->
+            </tbody>
+        </table>
+        <h3 id="total-sales">Total Sales: $0.00</h3>
+    </div>
 
-<h1>Markdown to HTML Converter</h1>
-<textarea id="markdown-input" rows="10" cols="50" placeholder="Paste your markdown here..."></textarea>
-<br>
-<button id="convert-button">Convert</button>
+    <script>
+        const products = [
+            { name: "Product A", sales: 150.00 },
+            { name: "Product B", sales: 200.50 },
+            { name: "Product C", sales: 300.75 }
+        ];
 
-<div id="markdown-output"></div>
+        function renderTable() {
+            const tbody = document.querySelector('#product-sales tbody');
+            let totalSales = 0;
 
-<script>
-    document.getElementById('convert-button').addEventListener('click', function() {
-        const markdownText = document.getElementById('markdown-input').value;
-        const htmlContent = marked(markdownText);
-        document.getElementById('markdown-output').innerHTML = htmlContent;
-        hljs.highlightAll();
-    });
-</script>
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${product.name}</td><td>${product.sales.toFixed(2)}</td>`;
+                tbody.appendChild(row);
+                totalSales += product.sales;
+            });
 
+            document.getElementById('total-sales').innerText = `Total Sales: $${totalSales.toFixed(2)}`;
+        }
+
+        // Initial render
+        renderTable();
+    </script>
 </body>
 </html>
