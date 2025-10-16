@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #markdown-output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Markdown to HTML Converter</h1>
+<textarea id="markdown-input" rows="10" cols="50" placeholder="Paste your markdown here..."></textarea>
+<br>
+<button id="convert-button">Convert</button>
+
+<div id="markdown-output"></div>
+
+<script>
+    document.getElementById('convert-button').addEventListener('click', function() {
+        const markdownText = document.getElementById('markdown-input').value;
+        const htmlContent = marked(markdownText);
+        document.getElementById('markdown-output').innerHTML = htmlContent;
+        hljs.highlightAll();
+    });
+</script>
+
+</body>
+</html>
